@@ -1,29 +1,39 @@
-import React from "react";
-import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { Button, ScrollView, StyleSheet, Text, View, Dimensions } from "react-native";
 
 import Card from "../Components/Card";
 import Colors from "../Constants/Colors";
 import MyButton from "../Components/MyButton";
 
 const GameOverScreen = (props) => {
+  const [BodyPadding, setBodyPadding] = useState(Dimensions.get('window').width < 415 ? 0 : 20);
+
+  const updateLayout = () => {
+    setBodyPadding(Dimensions.get('window').width < 415 ? 0 : 20)
+  };
+
+  Dimensions.addEventListener("change", updateLayout);
+
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-    <View style={styles.Screen}>
-      <Text style={styles.Title}>Fim de jogo!</Text>
-      <Card style={styles.confirmCard}>
-        <Text style={styles.confirmTxt}>Número de tentativas:</Text>
-        <Text style={styles.confirmNumber}>{props.roundsNumber}</Text>
-        <View
-          style={{
-            marginTop: 15,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "80%",
-          }}
-        ></View>
-      </Card>
-      <MyButton style={{marginTop: 30}} onPress={props.onRestart}>jogar novamente</MyButton>
-    </View>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, paddingVertical: BodyPadding }}>
+      <View style={styles.Screen}>
+        <Text style={styles.Title}>Fim de jogo!</Text>
+        <Card style={styles.confirmCard}>
+          <Text style={styles.confirmTxt}>Número de tentativas:</Text>
+          <Text style={styles.confirmNumber}>{props.roundsNumber}</Text>
+          <View
+            style={{
+              marginTop: 15,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: "80%",
+            }}
+          ></View>
+        </Card>
+        <MyButton style={{ marginTop: 30 }} onPress={props.onRestart}>
+          jogar novamente
+        </MyButton>
+      </View>
     </ScrollView>
   );
 };
