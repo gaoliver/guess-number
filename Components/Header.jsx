@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
   Header: {
     width: "100%",
     backgroundColor: Colors.primary,
-    paddingTop: 24 + 15,
-    paddingBottom: 15,
+    // paddingTop: 24 + 15,
+    // paddingBottom: 15,
+    paddingVertical: 15,
     alignItems: "center",
   },
   HeaderTitle: {

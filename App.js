@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  StatusBar,
-  View,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Alert,
-  SafeAreaView,
-} from "react-native";
+import { StyleSheet, StatusBar, Alert, SafeAreaView } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-// import { StatusBar } from "expo-status-bar";
 
 // Import Components
 import Colors from "./Constants/Colors";
@@ -71,15 +62,11 @@ export default function App() {
   }
 
   return (
-    <>
-      <StatusBar translucent={true} backgroundColor='transparent' />
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <SafeAreaView style={styles.Screen}>
-          <Header title="Adivinhe o Número" />
-          {content}
-        </SafeAreaView>
-      </TouchableWithoutFeedback>
-    </>
+    <SafeAreaView style={styles.Screen}>
+      <StatusBar backgroundColor={Colors.primary} />
+      <Header title="Adivinhe o Número" />
+      {content}
+    </SafeAreaView>
   );
 }
 
