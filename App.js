@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   StatusBar,
-  Text,
   View,
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
-  ScrollView,
-  Dimensions,
+  SafeAreaView,
 } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+// import { StatusBar } from "expo-status-bar";
 
 // Import Components
 import Colors from "./Constants/Colors";
@@ -22,8 +21,8 @@ import GameOverScreen from "./Screens/GameOverScreen";
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'grobold': require("./assets/Fonts/grobold.ttf"),
-    'billy': require("./assets/Fonts/billy-the-gang.ttf"),
+    grobold: require("./assets/Fonts/grobold.ttf"),
+    billy: require("./assets/Fonts/billy-the-gang.ttf"),
   });
 };
 
@@ -72,22 +71,20 @@ export default function App() {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.Screen}>
-        <StatusBar
-          barStyle={"default"}
-          backgroundColor={"#00000015"}
-          translucent={true}
-        />
-        <Header title="Adivinhe o Número" />
-        {content}
-      </View>
-    </TouchableWithoutFeedback>
+    <>
+      <StatusBar translucent={true} backgroundColor='transparent' />
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <SafeAreaView style={styles.Screen}>
+          <Header title="Adivinhe o Número" />
+          {content}
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   Screen: {
     flex: 1,
-  }
+  },
 });
