@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import Card from "../Components/Card";
 import Colors from "../Constants/Colors";
@@ -7,6 +7,7 @@ import MyButton from "../Components/MyButton";
 
 const GameOverScreen = (props) => {
   return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View style={styles.Screen}>
       <Text style={styles.Title}>Fim de jogo!</Text>
       <Card style={styles.confirmCard}>
@@ -23,6 +24,7 @@ const GameOverScreen = (props) => {
       </Card>
       <MyButton style={{marginTop: 30}} onPress={props.onRestart}>jogar novamente</MyButton>
     </View>
+    </ScrollView>
   );
 };
 

@@ -15,7 +15,7 @@ export default Header;
 
 const styles = StyleSheet.create({
     Header: {
-        width: Dimensions.get('screen').width,
+        width: '100%',
         backgroundColor: Colors.primary,
         paddingTop: 36,
         paddingVertical: 15,

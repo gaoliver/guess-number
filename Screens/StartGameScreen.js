@@ -1,11 +1,18 @@
 import React, { Component, useState } from "react";
-import { Alert, Button, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+} from "react-native";
 
 // Import Components
 import Card from "../Components/Card";
 import Colors from "../Constants/Colors";
 import InputText from "../Constants/InputText";
-import MyButton from '../Components/MyButton'
+import MyButton from "../Components/MyButton";
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -50,42 +57,46 @@ const StartGameScreen = (props) => {
         <Text style={styles.confirmNumber}>{selectedNumber}</Text>
         <View style={{ marginTop: 15 }}>
           {/* <Button color={Colors.secondary} title="Iniciar" onPress={() => props.onStartGame(selectedNumber)} /> */}
-          <MyButton onPress={() => props.onStartGame(selectedNumber)}>iniciar</MyButton>
+          <MyButton onPress={() => props.onStartGame(selectedNumber)}>
+            iniciar
+          </MyButton>
         </View>
       </Card>
     );
   }
 
   return (
-    <View style={styles.Screen}>
-      <Text style={styles.Title}>Iniciar Novo Jogo</Text>
-      <Card style={styles.InputContainer}>
-        <Text style={{ fontSize: 15 }}>Digite um número</Text>
-        <InputText
-          style={styles.InputText}
-          blurOnSubmit
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType={"number-pad"}
-          maxLength={2}
-          onChangeText={numberInputHandler}
-          value={enteredValue}
-        />
-        <View style={styles.ButtonContainer}>
-          <View style={{ width: 100 }}>
-            <Button title="Zerar" onPress={resetInputHandler} color="grey" />
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.Screen}>
+        <Text style={styles.Title}>Iniciar Novo Jogo</Text>
+        <Card style={styles.InputContainer}>
+          <Text style={{ fontSize: 15 }}>Digite um número</Text>
+          <InputText
+            style={styles.InputText}
+            blurOnSubmit
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType={"number-pad"}
+            maxLength={2}
+            onChangeText={numberInputHandler}
+            value={enteredValue}
+          />
+          <View style={styles.ButtonContainer}>
+            <View style={{ width: 100 }}>
+              <Button title="Zerar" onPress={resetInputHandler} color="grey" />
+            </View>
+            <View style={{ width: 100 }}>
+              <Button
+                title="Confirmar"
+                onPress={confirmInputHandler}
+                color={Colors.primary}
+              />
+            </View>
           </View>
-          <View style={{ width: 100 }}>
-            <Button
-              title="Confirmar"
-              onPress={confirmInputHandler}
-              color={Colors.primary}
-            />
-          </View>
-        </View>
-      </Card>
-      {confirmOutput}
-    </View>
+        </Card>
+        {confirmOutput}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -96,20 +107,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: "center",
-    justifyContent: 'center'
+    justifyContent: "center",
   },
   Title: {
     fontSize: 30,
-    fontFamily: 'grobold',
+    fontFamily: "grobold",
     marginVertical: 10,
-    marginBottom: 50
+    marginBottom: 50,
   },
   InputContainer: {
     width: 400,
     maxWidth: "80%",
   },
   InputText: {
-    minWidth: 60,
+    width: 60,
     textAlign: "center",
     marginVertical: 15,
   },
@@ -125,7 +136,7 @@ const styles = StyleSheet.create({
   confirmTxt: {
     fontSize: 16,
     marginTop: 10,
-    color: 'black'
+    color: "black",
   },
   confirmNumber: {
     fontSize: 40,
@@ -136,6 +147,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 45,
     borderWidth: 1,
     borderColor: Colors.secondary,
-    borderRadius: 10
+    borderRadius: 10,
   },
 });

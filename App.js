@@ -7,6 +7,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  ScrollView,
+  Dimensions,
 } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
@@ -87,5 +89,5 @@ export default function App() {
 const styles = StyleSheet.create({
   Screen: {
     flex: 1,
-  },
+  }
 });
