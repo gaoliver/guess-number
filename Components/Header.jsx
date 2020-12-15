@@ -13,11 +13,9 @@ const Header = (props) => {
   Dimensions.addEventListener("change", updateLayout);
 
   return (
-    <View style={{width: '100%', paddingTop: 36, backgroundColor: Colors.primary, position: HeaderPosition}}>
-      <View style={styles.Header}>
+      <View style={{...styles.Header, position: HeaderPosition}}>
         <Text style={styles.HeaderTitle}> {props.title} </Text>
       </View>
-    </View>
   );
 };
 
@@ -27,7 +25,7 @@ const styles = StyleSheet.create({
   Header: {
     width: "100%",
     backgroundColor: Colors.primary,
-    // paddingTop: 36,
+    paddingTop: 36,
     paddingVertical: 15,
     alignItems: "center",
   },
